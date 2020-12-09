@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textSize" format="dimension"/>
+    <attr name="textColor" format="color"/>
+    <attr name="backgroundColor" format="color"/>
+    <attr name="typeface" format="enum">
+        <enum name="normal" value="0" />
+        <enum name="sans" value="1" />
+        <enum name="serif" value="2" />
+        <enum name="monospace" value="3" />
+        <enum name="longcang" value="4"/>
+        <enum name="zhimangxing" value="5"/>
+    </attr>
+    <attr name="pathSize" format="float"/>
+    <attr name="paintStyle" format="enum">
+        <enum name="stroke" value="0"/>
+        <enum name="fill" value="1"/>
+        <enum name="fillandstroke" value="2"/>
+    </attr>
+    <attr name="gravity" format="enum">
+        <enum name="left" value="0"/>
+        <enum name="right" value="1"/>
+        <enum name="center" value="2"/>
+        <enum name="centerinparent" value="3"/>
+    </attr>
+    <attr name="text" format="string"/>
+    <attr name="duration" format="integer"/>
+    <declare-styleable name="PathView">
+        <attr name="textSize"/>
+        <attr name="textColor"/>
+        <attr name="backgroundColor"/>
+        <attr name="typeface"/>
+        <attr name="text"/>
+        <attr name="duration"/>
+        <attr name="pathSize"/>
+        <attr name="paintStyle"/>
+        <attr name="gravity"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.qmuiteam.qmui.layout.QMUILinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:qmui_radius="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="用户协议《隐私条款》"
+                android:textColor="#ff000000"
+                android:textSize="18sp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/contentTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="25dp"
+                    android:clickable="true"
+                    android:lineSpacingExtra="25dp"
+                    android:text=""
+                    android:textColor="#ff333333"
+                    android:textSize="14sp" />
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                android:paddingRight="24dp"
+                android:paddingLeft="24dp"
+                android:paddingBottom="20dp">
+                <com.qmuiteam.qmui.layout.QMUILinearLayout
+                    android:id="@+id/refundLv"
+                    android:layout_width="0dp"
+                    android:layout_height="34dp"
+                    android:layout_weight="1"
+                    android:background="#5999FC"
+                    android:gravity="center"
+                    app:qmui_radius="17dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="退出应用"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp" />
+                </com.qmuiteam.qmui.layout.QMUILinearLayout>
+                <com.qmuiteam.qmui.layout.QMUILinearLayout
+                    android:id="@+id/sureLv"
+                    android:layout_width="0dp"
+                    android:layout_height="34dp"
+                    android:layout_weight="1"
+                    android:background="#2860EB"
+                    android:layout_marginLeft="24dp"
+                    android:gravity="center"
+                    app:qmui_radius="17dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="同意并继续"
+                        android:textColor="#ffffff"
+                        android:textSize="16sp" />
+                </com.qmuiteam.qmui.layout.QMUILinearLayout>
+
+            </LinearLayout>
+        </com.qmuiteam.qmui.layout.QMUILinearLayout>
+    </LinearLayout>
+</LinearLayout>

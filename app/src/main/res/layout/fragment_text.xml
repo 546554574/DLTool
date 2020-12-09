@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.toune.dltools.view.DLPathView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/pathView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:duration="6000"
+                app:gravity="right"
+                app:paintStyle="fill"
+                app:pathSize="1"
+                app:text="hello 开发者们"
+                app:textColor="@color/black3"
+                app:textSize="60sp"
+                app:typeface="zhimangxing" />
+
+            <EditText
+                android:id="@+id/textEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入要展示的内容" />
+
+            <EditText
+                android:id="@+id/durationEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="请输入要持续的时间" />
+
+            <EditText
+                android:id="@+id/textSizeEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="请输入要文字大小" />
+
+            <EditText
+                android:id="@+id/painSizeEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="请输入要画笔大小" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/textColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="请输入要文字颜色" />
+
+                <Button
+                    android:id="@+id/randomColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="随机" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="位置:" />
+
+                <RadioGroup
+                    android:id="@+id/locationRp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/leftRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="left" />
+
+                    <RadioButton
+                        android:id="@+id/rightRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="right" />
+
+                    <RadioButton
+                        android:id="@+id/centerRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="center" />
+
+                    <RadioButton
+                        android:id="@+id/centerInParentRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="centerInParent" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="样式:" />
+
+                <RadioGroup
+                    android:id="@+id/styleRp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/strokeRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="stroke" />
+
+                    <RadioButton
+                        android:id="@+id/fillRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="fill" />
+
+                    <RadioButton
+                        android:id="@+id/fillAndStrokeRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="fillAndStroke" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="字体:" />
+
+                <RadioGroup
+                    android:id="@+id/fontRp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/sansRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="sans" />
+
+                    <RadioButton
+                        android:id="@+id/serifRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="serif" />
+
+                    <RadioButton
+                        android:id="@+id/longCangRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="longCang" />
+
+                    <RadioButton
+                        android:id="@+id/zhiMangXingRb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="zhiMangXing" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/startBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="演示" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,3 @@
+include ':DLTools'
+include ':app'
+rootProject.name = "BaseKotlinApp"

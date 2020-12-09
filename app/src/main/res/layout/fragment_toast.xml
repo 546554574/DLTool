@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/normalBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="normal默认"/>
+
+    <Button
+        android:id="@+id/errorBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="error错误"/>
+
+    <Button
+        android:id="@+id/successBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="success成功" />
+
+    <Button
+        android:id="@+id/warningBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="warning警告"/>
+
+    <Button
+        android:id="@+id/infoBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="info提醒" />
+
+    <Button
+        android:id="@+id/customBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="custom自定义" />
+</LinearLayout>
