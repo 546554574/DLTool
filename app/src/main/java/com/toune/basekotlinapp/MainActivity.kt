@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.blankj.rxbus.RxBus
 import com.toune.basekotlinapp.adapter.MainAdapter
 import com.toune.basekotlinapp.fragment.MDialogFragment
+import com.toune.basekotlinapp.fragment.QRFragment
 import com.toune.basekotlinapp.fragment.TextFragment
 import com.toune.basekotlinapp.fragment.ToastFragment
 import com.toune.basekotlinapp.presenter.MainActivityPresenter
@@ -24,8 +25,8 @@ class MainActivity : DLBaseActivity<MainActivityView,MainActivityPresenter>(),Ma
         return MainActivityPresenter()
     }
 
-    val dataList = arrayListOf<String>("吐司","弹窗","艺术字")
-    val fragmentList = arrayListOf(ToastFragment.newInstance(),MDialogFragment.newInstance(),TextFragment.newInstance())
+    val dataList = arrayListOf<String>("吐司","弹窗","艺术字","二维码")
+    val fragmentList = arrayListOf(ToastFragment.newInstance(),MDialogFragment.newInstance(),TextFragment.newInstance(),QRFragment.newInstance())
     var adapter: MainAdapter?=null
     override fun init(savedInstanceState: Bundle?) {
         notifyAdapter()

@@ -90,7 +90,6 @@ class DLPathView @JvmOverloads constructor(
                 y = height / 2 - mPathBounds.top - mPathBounds.height() / 2
             }
         }
-        Log.e("pathView", "x: $x    y:$y")
         canvas.translate(x,y)
         canvas.drawPath(drawingPath!!, textPaint)
     }

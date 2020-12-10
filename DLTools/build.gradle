@@ -69,4 +69,6 @@ dependencies {
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     //pathView
     api 'com.eftimoff:android-pathview:1.0.8@aar'
+
+    api project(path: ':zbarlibary')
 }
