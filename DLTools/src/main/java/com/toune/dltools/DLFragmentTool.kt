@@ -42,4 +42,10 @@ object DLFragmentTool {
         }
         beginTransaction.commitNow()
     }
+
+    fun removeFragment(supportFragmentManager: FragmentManager, fragment: Fragment) {
+        val beginTransaction = supportFragmentManager.beginTransaction()
+        beginTransaction.remove(fragment)
+        beginTransaction.commitNow()
+    }
 }

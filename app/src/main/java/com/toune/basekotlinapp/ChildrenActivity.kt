@@ -33,12 +33,15 @@ class ChildrenActivity:DLBaseActivity<ChildrenActivityView,ChildrenActivityPrese
             override fun onEvent(t: UpdateFragmentMsg?) {
                 if (fragment==null) {
                     fragment = t!!.fragment!!
-                    DLFragmentTool.showFragment(supportFragmentManager,R.id.frameId,fragment!!)
+                    DLFragmentTool.replaceFragment(supportFragmentManager,R.id.frameId,fragment!!)
                 }
             }
         })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
     override fun initEventAndData() {
     }
 }
