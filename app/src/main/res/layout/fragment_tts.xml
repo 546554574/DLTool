@@ -4,12 +4,127 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fileNameTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/selectFileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择文件" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="出现文字无法正常显示，切换下面，点击确定。" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/codeRp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/gbkRb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="GBK" />
+
+            <RadioButton
+                android:id="@+id/utfRb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="UTF-8" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/changeCodeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定转换格式" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/pitchTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="音色" />
+
+        <SeekBar
+            android:id="@+id/pitchSb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            android:min="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/rateTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="音速" />
+
+        <SeekBar
+            android:id="@+id/rateSb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            android:min="1" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textStrTv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="hello 开发者" />
+        android:gravity="center"
+        android:text="hello 开发者"
+        android:textColor="@color/black3"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/lineNumTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black3"
+        android:textSize="@dimen/sp_16" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,15 +134,15 @@
         <Button
             android:id="@+id/startReadBtn"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="开始朗读" />
 
         <Button
             android:id="@+id/stopReadBtn"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="停止朗读" />
     </LinearLayout>
 

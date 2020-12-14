@@ -13,7 +13,8 @@ import com.toune.dltools.DLTool
 class App: Application() {
     override fun onCreate() {
         super.onCreate()
-        DLTool.init(this).setLongCangFont()
+        DLTool.init(this)
+//            .setLongCangFont()
     }
 
     override fun attachBaseContext(base: Context?) {

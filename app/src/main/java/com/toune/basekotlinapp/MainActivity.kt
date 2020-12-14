@@ -12,7 +12,7 @@ import com.toune.dltools.DLActivityTool
 import com.toune.dltools.ui.DLBaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : DLBaseActivity<MainActivityView,MainActivityPresenter>(),MainActivityView {
+class MainActivity : DLBaseActivity<MainActivityView, MainActivityPresenter>(), MainActivityView {
     override val layout: Int
         get() = R.layout.activity_main
     override val titleStr: String?
@@ -22,25 +22,34 @@ class MainActivity : DLBaseActivity<MainActivityView,MainActivityPresenter>(),Ma
         return MainActivityPresenter()
     }
 
-    val dataList = arrayListOf<String>("吐司","弹窗","艺术字","二维码","语音朗读")
-    val fragmentList = arrayListOf(ToastFragment.newInstance(),MDialogFragment.newInstance(),TextFragment.newInstance(),QRFragment.newInstance(),TTSFragment())
-    var adapter: MainAdapter?=null
+    companion object {
+        val dataList = arrayListOf<String>("吐司", "弹窗", "艺术字", "二维码", "语音朗读")
+        val fragmentList = arrayListOf(
+            ToastFragment.newInstance(),
+            MDialogFragment.newInstance(),
+            TextFragment.newInstance(),
+            QRFragment.newInstance(),
+            TTSFragment()
+        )
+    }
+
+    var adapter: MainAdapter? = null
     override fun init(savedInstanceState: Bundle?) {
         notifyAdapter()
     }
 
     private fun notifyAdapter() {
-        if (adapter==null){
-            adapter = MainAdapter(R.layout.adapter_main,dataList)
-            rclView.layoutManager = GridLayoutManager(context,3)
+        if (adapter == null) {
+            adapter = MainAdapter(R.layout.adapter_main, dataList)
+            rclView.layoutManager = GridLayoutManager(context, 3)
             rclView.adapter = adapter
             adapter!!.setOnItemClickListener { adapter, view, position ->
                 var bundle = Bundle()
-                bundle.putString("title",dataList[position])
-                DLActivityTool.skipActivity(context,ChildrenActivity::class.java,bundle)
-                RxBus.getDefault().postSticky(UpdateFragmentMsg(fragmentList[position]))
+                bundle.putString("title", dataList[position])
+                bundle.putInt("position", position)
+                DLActivityTool.skipActivity(context, ChildrenActivity::class.java, bundle)
             }
-        }else{
+        } else {
             adapter!!.notifyDataSetChanged()
         }
     }
