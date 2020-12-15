@@ -3,6 +3,7 @@ package com.toune.basekotlinapp.fragment
 import android.Manifest
 import android.os.Build
 import android.speech.tts.UtteranceProgressListener
+import android.speech.tts.Voice
 import android.util.Log
 import android.widget.SeekBar
 import androidx.annotation.RequiresApi

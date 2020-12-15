@@ -23,13 +23,14 @@ class MainActivity : DLBaseActivity<MainActivityView, MainActivityPresenter>(), 
     }
 
     companion object {
-        val dataList = arrayListOf<String>("吐司", "弹窗", "艺术字", "二维码", "语音朗读")
+        val dataList = arrayListOf<String>("吐司", "弹窗", "艺术字", "二维码", "语音朗读","文本转MP3")
         val fragmentList = arrayListOf(
             ToastFragment.newInstance(),
             MDialogFragment.newInstance(),
             TextFragment.newInstance(),
             QRFragment.newInstance(),
-            TTSFragment()
+            TTSFragment(),
+            TextToMP3Fragment()
         )
     }
 
@@ -48,6 +49,7 @@ class MainActivity : DLBaseActivity<MainActivityView, MainActivityPresenter>(), 
                 bundle.putString("title", dataList[position])
                 bundle.putInt("position", position)
                 DLActivityTool.skipActivity(context, ChildrenActivity::class.java, bundle)
+//                DLActivityTool.skipActivity(context,TtsDemo::class.java)
             }
         } else {
             adapter!!.notifyDataSetChanged()

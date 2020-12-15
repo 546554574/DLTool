@@ -3,6 +3,8 @@ package com.toune.basekotlinapp
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
+import com.iflytek.cloud.SpeechConstant
+import com.iflytek.cloud.SpeechUtility
 import com.toune.dltools.DLTool
 
 /**
@@ -15,6 +17,8 @@ class App: Application() {
         super.onCreate()
         DLTool.init(this)
 //            .setLongCangFont()
+
+        SpeechUtility.createUtility(this, SpeechConstant.APPID +"=5b88f53c");
     }
 
     override fun attachBaseContext(base: Context?) {
