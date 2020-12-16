@@ -12,7 +12,6 @@ import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.annotation.RequiresApi
-import com.eftimoff.androipathview.PathView
 import com.toune.dltools.DLColorTool
 import com.toune.dltools.DLTextTool
 import com.toune.dltools.R
