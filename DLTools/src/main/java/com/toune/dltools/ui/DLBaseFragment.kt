@@ -50,11 +50,11 @@ abstract class DLBaseFragment<V, T : DLBasePresenterImpl<V>?> : QMUIFragment(), 
         isLoaded = false
     }
 
-    //懒加载方法
-    abstract fun lazyInit()
-
     // 实例化presenter
     abstract fun initPresenter(): T
+
+    //懒加载方法
+    abstract fun lazyInit()
 
     override fun showLoading() {
         (activity as DLBaseActivity<*,*>).showLoading()

@@ -11,6 +11,7 @@ import com.blankj.rxbus.RxBus
 import com.hjq.permissions.OnPermission
 import com.hjq.permissions.XXPermissions
 import com.leon.lfilepickerlibrary.LFilePicker
+import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
 import com.toune.basekotlinapp.ChildrenActivity.Companion.REQUESTCODE_FROM_ACTIVITY
 import com.toune.basekotlinapp.R
@@ -31,10 +32,13 @@ class TTSFragment : DLBaseFragment<DLBaseView, DLBasePresenterImpl<DLBaseView>>(
 
     override val layout: Int
         get() = R.layout.fragment_tts
+
     //播放工具类
     var dlttsTool: DLTTSTool? = null
+
     //文件编码，默认GBK
     var code = DLFileTool.GBKcode
+
     //选中的文件路径
     var fileName: String? = null
 
@@ -80,17 +84,17 @@ class TTSFragment : DLBaseFragment<DLBaseView, DLBasePresenterImpl<DLBaseView>>(
             fileName = DLSPTool.getString(requireContext(), TTS_FILE_KEY)
             index = DLSPTool.getInt(requireContext(), TTS_INDEX_KEY)
             mRootView!!.fileNameTv.text = fileName
-            mRootView!!.rateSb.progress = DLSPTool.getInt(requireContext(),TTS_RATE_KEY)
-            mRootView!!.pitchSb.progress = DLSPTool.getInt(requireContext(),TTS_PITCH_KEY)
-            code = DLSPTool.getString(requireContext(),TTS_CODE_KEY)!!
-            if (code==DLFileTool.UTF8code){
+            mRootView!!.rateSb.progress = DLSPTool.getInt(requireContext(), TTS_RATE_KEY)
+            mRootView!!.pitchSb.progress = DLSPTool.getInt(requireContext(), TTS_PITCH_KEY)
+            code = DLSPTool.getString(requireContext(), TTS_CODE_KEY)!!
+            if (code == DLFileTool.UTF8code) {
                 mRootView!!.utfRb.isChecked = true
             }
             readFile(fileName!!)
         }
         RxBus.getDefault().subscribeSticky(this, object : RxBus.Callback<SelectFileMsg>() {
             override fun onEvent(t: SelectFileMsg?) {
-                if(fileName!=t!!.fileName!!) {
+                if (fileName != t!!.fileName!!) {
                     fileName = t!!.fileName!!
                     DLSPTool.putString(requireContext(), TTS_FILE_KEY, fileName)
                     mRootView!!.fileNameTv.text = fileName
@@ -110,7 +114,7 @@ class TTSFragment : DLBaseFragment<DLBaseView, DLBasePresenterImpl<DLBaseView>>(
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun initListener(){
+    private fun initListener() {
         mRootView!!.startReadBtn.setOnClickListener {
             if (readFile2List.size > index) {
                 dlttsTool!!.setText(readFile2List[index]).speek()
@@ -119,11 +123,11 @@ class TTSFragment : DLBaseFragment<DLBaseView, DLBasePresenterImpl<DLBaseView>>(
         mRootView!!.stopReadBtn.setOnClickListener {
             dlttsTool!!.stopTTS()
         }
-        mRootView!!.rateSb.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+        mRootView!!.rateSb.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 ratePro = progress
-                dlttsTool!!.rate = progress/10f
-                mRootView!!.rateTv.text = "音速：${progress/10f}"
+                dlttsTool!!.rate = progress / 10f
+                mRootView!!.rateTv.text = "音速：${progress / 10f}"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -133,11 +137,11 @@ class TTSFragment : DLBaseFragment<DLBaseView, DLBasePresenterImpl<DLBaseView>>(
             }
 
         })
-        mRootView!!.pitchSb.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+        mRootView!!.pitchSb.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 pitchPro = progress
-                dlttsTool!!.setPitch(progress/10f)
-                mRootView!!.pitchTv.text = "音色：${progress/10f}"
+                dlttsTool!!.setPitch(progress / 10f)
+                mRootView!!.pitchTv.text = "音色：${progress / 10f}"
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -187,7 +191,27 @@ class TTSFragment : DLBaseFragment<DLBaseView, DLBasePresenterImpl<DLBaseView>>(
 //            .withFileSize((500 * 1024).toLong()) //指定文件大小为500K
                 .start()
         }
+
+        mRootView!!.maleVoiceBtn.setOnClickListener {
+            dlttsTool!!.setMaleVoice()
+        }
+        mRootView!!.femaleVoiceBtn.setOnClickListener {
+            dlttsTool!!.setFemaleVoice()
+        }
+
+        mRootView!!.listVoiceBtn.setOnClickListener {
+            val bottomListSheetBuilder = QMUIBottomSheet.BottomListSheetBuilder(context)
+            for (i in dlttsTool!!.mVoices) {
+                bottomListSheetBuilder.addItem(i.name)
+            }
+            bottomListSheetBuilder.setOnSheetItemClickListener { dialog, itemView, position, tag ->
+                dlttsTool!!.setVoice(dlttsTool!!.mVoices[position])
+                dlttsTool!!.setText("这个声音是这样的！").speek()
+            }
+            bottomListSheetBuilder.build().show()
+        }
     }
+
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun nextRead() {
         mRootView!!.textStrTv.text = readFile2List[index]
@@ -226,8 +250,8 @@ class TTSFragment : DLBaseFragment<DLBaseView, DLBasePresenterImpl<DLBaseView>>(
         dlttsTool!!.stop()
         DLSPTool.putInt(requireContext(), TTS_INDEX_KEY, index)
         DLSPTool.putString(requireContext(), TTS_CODE_KEY, code)
-        DLSPTool.putInt(requireContext(), TTS_RATE_KEY,ratePro)
-        DLSPTool.putInt(requireContext(), TTS_PITCH_KEY,pitchPro)
+        DLSPTool.putInt(requireContext(), TTS_RATE_KEY, ratePro)
+        DLSPTool.putInt(requireContext(), TTS_PITCH_KEY, pitchPro)
     }
 
     override fun initPresenter(): DLBasePresenterImpl<DLBaseView> {

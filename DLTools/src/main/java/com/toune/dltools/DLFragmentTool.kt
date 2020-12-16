@@ -24,7 +24,7 @@ object DLFragmentTool {
     }
 
 
-    fun hideFragment(fragmentManager: FragmentManager, id: Int, fragment: Fragment) {
+    fun hideFragment(fragmentManager: FragmentManager, fragment: Fragment) {
         val beginTransaction = fragmentManager.beginTransaction()
         if (fragment.isAdded) {
             beginTransaction.hide(fragment)

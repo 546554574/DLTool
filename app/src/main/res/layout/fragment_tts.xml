@@ -107,6 +107,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/maleVoiceBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男声"/>
+
+        <Button
+            android:id="@+id/femaleVoiceBtn"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content"
+            android:text="女声"/>
+
+        <Button
+            android:id="@+id/listVoiceBtn"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content"
+            android:text="浏览所有声音"/>
+    </LinearLayout>
+
+
     <TextView
         android:id="@+id/textStrTv"
         android:layout_width="match_parent"

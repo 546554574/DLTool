@@ -29,6 +29,7 @@ import java.util.*
  */
 object DLFileTool {
     val UTF8code = "UTF-8"
+    val GBKcode = "GBK"
     const val BUFSIZE = 1024 * 8
     private const val TAG = "RxFileTool"
     /**
