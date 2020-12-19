@@ -67,6 +67,10 @@ dependencies {
     implementation 'com.classic.common:multiple-status-view:1.7'
     //adapter
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    //okhttp
+    api("com.squareup.okhttp3:okhttp:4.9.0")
+    //GSON
+    api 'com.google.code.gson:gson:2.8.6'
 
     api project(path: ':zbarlibary')
 }

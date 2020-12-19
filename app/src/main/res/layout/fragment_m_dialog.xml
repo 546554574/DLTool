@@ -23,4 +23,10 @@
         android:text="显示loading"/>
 
 
+    <Button
+        android:id="@+id/showVerifyCodeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="验证码输入框"/>
+
 </LinearLayout>

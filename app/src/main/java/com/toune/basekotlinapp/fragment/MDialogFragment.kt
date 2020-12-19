@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.annotation.RequiresApi
 import com.toune.basekotlinapp.R
+import com.toune.basekotlinapp.dialog.InputPhoneVerifyCodeDialog
 import com.toune.dltools.DLBasePresenterImpl
 import com.toune.dltools.DLBaseView
 import com.toune.dltools.DLTextTool
@@ -59,6 +60,9 @@ class MDialogFragment : DLBaseFragment<DLBaseView, DLBasePresenterImpl<DLBaseVie
         }
         showLoadingBtn.setOnClickListener {
             showLoading()
+        }
+        showVerifyCodeBtn.setOnClickListener {
+            InputPhoneVerifyCodeDialog(context).show()
         }
     }
 

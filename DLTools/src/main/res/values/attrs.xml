@@ -37,4 +37,21 @@
         <attr name="gravity"/>
     </declare-styleable>
 
+    <declare-styleable name="verify_code">
+        <attr name="inputStyle">
+            <enum name="line" value="0"/>
+            <enum name="box" value="1"/>
+        </attr>
+        <attr name="num" format="integer"/>
+        <attr name="boxLineWidth" format="dimension"/>
+        <attr name="boxLineColor" format="color"/>
+        <attr name="textColor"/>
+        <attr name="textSize"/>
+        <attr name="lineWidth" format="dimension"/>
+        <attr name="lineHeight" format="dimension"/>
+        <attr name="lineSelectColor" format="color"/>
+        <attr name="lineDefColor" format="color"/>
+        <attr name="lineVerPadding" format="dimension"/>
+        <attr name="lineHorPadding" format="dimension"/>
+    </declare-styleable>
 </resources>

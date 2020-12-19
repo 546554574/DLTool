@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qmuiteam.qmui.layout.QMUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp_20"
+    app:qmui_radius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingTop="@dimen/dp_15"
+        android:paddingRight="@dimen/dp_15">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请输入验证码"
+                android:textColor="#ff19191a"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/closeIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_close_14" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/phoneTipTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7.5dp"
+            android:text="已发送至银行预留手机号"
+            android:textColor="#ff777f91"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_15"
+        android:background="#EDEEF2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingTop="@dimen/dp_15"
+        android:paddingRight="@dimen/dp_15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥30,046.00"
+            android:textColor="#ff19191a"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <com.toune.dltools.view.DLVerifyCodeInputView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/inputView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            app:lineSelectColor="@color/red"
+            app:lineHorPadding="25dp"
+            app:lineHeight="@dimen/dp_10"
+            app:inputStyle="line"
+            app:num="6" />
+
+        <com.qmuiteam.qmui.layout.QMUIButton
+            android:id="@+id/sureBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_30"
+            android:background="#3775F6"
+            android:text="确定"
+            android:textColor="@color/white"
+            app:qmui_radius="@dimen/dp_20" />
+    </LinearLayout>
+</com.qmuiteam.qmui.layout.QMUILinearLayout>

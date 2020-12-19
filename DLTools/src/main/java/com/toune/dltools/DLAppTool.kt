@@ -425,6 +425,19 @@ object DLAppTool {
     }
 
     /**
+     * 安装APK
+     *
+     * @param context
+     * @param APK_PATH
+     */
+    fun InstallAPK(context: Context, apkFile: File) { //提示安装APK
+        val i = Intent(Intent.ACTION_VIEW)
+        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        i.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive")
+        context.startActivity(i)
+    }
+
+    /**
      * 获取当前App信息
      *
      * AppInfo（名称，图标，包名，版本号，版本Code，是否安装在SD卡，是否是用户程序）
