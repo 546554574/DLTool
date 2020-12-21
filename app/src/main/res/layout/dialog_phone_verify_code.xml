@@ -76,8 +76,8 @@
             android:layout_marginTop="@dimen/dp_20"
             app:lineSelectColor="@color/red"
             app:lineHorPadding="25dp"
-            app:lineHeight="@dimen/dp_10"
-            app:inputStyle="line"
+            app:lineHeight="@dimen/dp_2"
+            app:inputStyle="box"
             app:num="6" />
 
         <com.qmuiteam.qmui.layout.QMUIButton

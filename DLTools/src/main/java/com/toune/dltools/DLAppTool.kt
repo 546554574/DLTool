@@ -500,26 +500,6 @@ object DLAppTool {
     }
 
     /**
-     * 判断当前App处于前台还是后台
-     *
-     * 需添加权限 `<uses-permission android:name="android.permission.GET_TASKS"/>`
-     *
-     * 并且必须是系统应用该方法才有效
-     *
-     * @param context 上下文
-     * @return `true`: 后台<br></br>`false`: 前台
-     */
-    fun isAppBackground(context: Context): Boolean {
-        val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        val tasks = am.getRunningTasks(1)
-        if (!tasks.isEmpty()) {
-            val topActivity = tasks[0].topActivity
-            return topActivity!!.packageName != context.packageName
-        }
-        return false
-    }
-
-    /**
      * 清除App所有数据
      *
      * @param context  上下文

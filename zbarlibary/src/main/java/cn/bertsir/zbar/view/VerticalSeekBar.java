@@ -7,13 +7,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
 
+import androidx.appcompat.widget.AppCompatSeekBar;
+
 import cn.bertsir.zbar.R;
 
 /**
  * Created by Bert on 2019/3/1.
  * Mail: bertsir@163.com
  */
-public class VerticalSeekBar extends SeekBar {
+public class VerticalSeekBar extends AppCompatSeekBar {
     private static final String TAG = VerticalSeekBar.class.getSimpleName();
 
     public static final int ROTATION_ANGLE_CW_90 = 90;
