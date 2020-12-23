@@ -1,5 +1,5 @@
 # DLTool
-[![](https://jitpack.io/#546554574/DLTool.svg)]https://jitpack.io/#546554574/DLTool)
+![https://jitpack.io/#546554574/DLTool.svg]https://jitpack.io/#546554574/DLTool)
 ## Step1
 ```
 allprojects {
