@@ -16,7 +16,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -96,5 +96,7 @@ dependencies {
     api("com.squareup.okhttp3:okhttp:4.9.0")
     //GSON
     api 'com.google.code.gson:gson:2.8.6'
+
+    api project(path: ':zbarlibary')
 
 }
