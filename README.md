@@ -13,7 +13,11 @@ allprojects {
 ```
   implementation 'com.github.546554574:DLTool:1.0.0'
 ```
-
+## Step3
+```
+将minSdkVersion版本设置为19
+minSdkVersion 19
+```
 
 ## 感谢以下开源项目：
 + [qmui-Android](https://github.com/Tencent/QMUI_Android)
