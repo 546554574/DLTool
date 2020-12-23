@@ -1,4 +1,19 @@
 # DLTool
+## Step1
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+## Step2
+```
+  implementation 'com.github.546554574:DLTool:1.0.0'
+```
+
+
 ##日常学习和使用整理：
 + 自用的MVP框架
 + 引用的Toasty的吐司
