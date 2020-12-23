@@ -57,4 +57,6 @@ dependencies {
     //添加multidex依賴
     implementation 'androidx.multidex:multidex:2.0.0'
     implementation 'com.leon:lfilepickerlibrary:1.8.0'
+
+    implementation project(path: ':zbarlibary')
 }

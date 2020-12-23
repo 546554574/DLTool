@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+//apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 29
@@ -27,10 +28,19 @@ android {
     }
     lintOptions {
         abortOnError false
+        checkReleaseBuilds false // 打包Release版本的时候也不进行Lint检测
     }
 
 }
-
+//publish {
+//    userOrg = 'leidong1112'
+//    repoName = 'toune'
+//    groupId = 'cn.toune'
+//    artifactId = 'DLZBar'
+//    publishVersion = '1.0.0'
+//    desc = 'One line of code turns on the elasticity dialog'
+//    website = 'https://github.com/546554574/DLTool'
+//}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.2.0'

@@ -1,4 +1,3 @@
-include ':mscV5PlusDemo'
 include ':zbarlibary'
 include ':DLTools'
 include ':app'
