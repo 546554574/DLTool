@@ -16,12 +16,14 @@ import androidx.core.graphics.ColorUtils
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 import com.toune.dltools.*
+import com.toune.dltools.dialog.LoadingDialog
 import com.toune.permission.DLPermissionUtil
 import kotlinx.android.synthetic.main.activity_base.*
 import java.io.File
 
 
-open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatActivity(), DLBaseView {
+open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatActivity(),
+    DLBaseView {
     val isSignOut = false//判断是不是双击返回按钮退出APP的页面
     lateinit var context: Context
     var mPresenter: T? = null
@@ -71,7 +73,7 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
         DLPermissionUtil.with(this).build()
     }
 
-    fun addRightView(view: View){
+    fun addRightView(view: View) {
         rightLv.addView(
             view, ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -79,6 +81,7 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
             )
         )
     }
+
     /**
      * 设置沉浸式
      */
@@ -101,10 +104,13 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
     private fun isLightColor(@ColorInt color: Int): Boolean {
         return ColorUtils.calculateLuminance(color) >= 0.5
     }
+
     abstract val layout: Int
     abstract val titleStr: String?
+
     // 实例化presenter
     abstract fun initPresenter(): T
+
     /**
      * 返回按钮，可不实现
      */
@@ -127,25 +133,30 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
     abstract fun initEventAndData()
 
     //如果有自定义需求就用这个方法//如果有自定义需求就用这个方法
-    lateinit var loadingDialog: QMUITipDialog
+    lateinit var loadingDialog: LoadingDialog
 
     override fun showLoading() {
         if (this::loadingDialog.isInitialized) {
             loadingDialog.show()
         } else {
-            loadingDialog = QMUITipDialog.Builder(this)
-                .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
-                .create(false)
+            loadingDialog = LoadingDialog(this, DLActivityConfig.loadingColor,DLActivityConfig.loadingXml)
             loadingDialog.setCanceledOnTouchOutside(true)
             loadingDialog.show()
         }
     }
 
-   override fun hideLoading() {
+    override fun hideLoading() {
         if (this::loadingDialog.isInitialized && loadingDialog.isShowing) {
             loadingDialog.hide()
             loadingDialog.dismiss()
         }
+    }
+
+    /**
+     * 显示主内容
+     */
+    fun showContent() {
+        mRootRv.showContent()
     }
 
     override fun onBackPressed() {

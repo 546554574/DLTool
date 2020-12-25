@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
-//    id 'com.novoda.bintray-release'
     id 'com.github.dcendents.android-maven'
 }
 
@@ -45,17 +44,6 @@ android {
 
 }
 
-
-//publish {
-//    userOrg = 'leidong1112'
-//    repoName = 'toune'
-//    groupId = 'cn.toune'
-//    artifactId = 'DLTools'
-//    publishVersion = '1.0.0'
-//    desc = 'One line of code turns on the elasticity dialog'
-//    website = 'https://github.com/546554574/DLTool'
-//}
-
 repositories {
     mavenCentral()
 }
@@ -96,6 +84,8 @@ dependencies {
     api("com.squareup.okhttp3:okhttp:4.9.0")
     //GSON
     api 'com.google.code.gson:gson:2.8.6'
+    //loading
+    api 'com.github.ybq:Android-SpinKit:1.4.0'
 
     api project(path: ':zbarlibary')
 

@@ -5,20 +5,28 @@ import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
+import kotlin.properties.Delegates
 
 abstract class DLBaseDialog : QMUIDialog {
-    constructor(context: Context?) : super(context) {
+
+    private var layout by Delegates.notNull<Int>()
+
+    constructor(context: Context?, layoutId: Int) : super(context) {
+        this.layout = layoutId
         initView()
     }
 
-    constructor(context: Context?, themeResId: Int) : super(context, themeResId) {
+    constructor(context: Context?, layoutId: Int, themeResId: Int) : super(context, themeResId) {
+        this.layout = layoutId
         initView()
     }
 
     protected constructor(
         context: Context?,
+        layoutId: Int,
         cancelable: Boolean,
     ) : super(context) {
+        this.layout = layoutId
         setCanceledOnTouchOutside(cancelable)
         initView()
     }
@@ -31,5 +39,4 @@ abstract class DLBaseDialog : QMUIDialog {
     }
 
     protected abstract fun initEvent()
-    protected abstract val layout: Int
 }

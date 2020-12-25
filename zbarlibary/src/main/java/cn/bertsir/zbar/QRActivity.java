@@ -335,8 +335,7 @@ public class QRActivity extends Activity implements View.OnClickListener, Sensor
      */
     private void recognitionLocation(Uri uri) {
         final String imagePath = GetPathFromUri.getPath(this, uri);
-        textDialog = showProgressDialog();
-        textDialog.setText("请稍后...");
+        showProgressDialog();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -415,20 +414,18 @@ public class QRActivity extends Activity implements View.OnClickListener, Sensor
     }
 
 
-    public TextView showProgressDialog() {
+    public void showProgressDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogStyle);
         builder.setCancelable(false);
         View view = View.inflate(this, R.layout.dialog_loading, null);
         builder.setView(view);
         ProgressBar pb_loading = (ProgressBar) view.findViewById(R.id.pb_loading);
-        TextView tv_hint = (TextView) view.findViewById(R.id.tv_hint);
+//        TextView tv_hint = (TextView) view.findViewById(R.id.tv_hint);
         if (Build.VERSION.SDK_INT >= 23) {
             pb_loading.setIndeterminateTintList(getColorStateList(R.color.dialog_pro_color));
         }
         progressDialog = builder.create();
         progressDialog.show();
-
-        return tv_hint;
     }
 
     public void closeProgressDialog() {

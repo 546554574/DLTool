@@ -25,14 +25,14 @@ class DLPermissionDialog : DLBaseDialog {
         context: Context,
         contentSpan: SpannableStringBuilder,
         onPermissionClickListener: OnPermissionClickListener
-    ) : super(context, false) {
+    ) : super(context, R.layout.dialog_permission,false) {
         this.onPermissionClickListener = onPermissionClickListener
         this.contentSpan = contentSpan
     }
     constructor(
         context: Context,
         onPermissionClickListener: OnPermissionClickListener
-    ) : super(context, false) {
+    ) : super(context, R.layout.dialog_permission,false) {
         this.onPermissionClickListener = onPermissionClickListener
         initContentSpan()
     }
@@ -99,9 +99,6 @@ class DLPermissionDialog : DLBaseDialog {
 
         contentTv.text = contentSpan
     }
-
-    override val layout: Int
-        get() = R.layout.dialog_permission
 
     var onPermissionClickListener: OnPermissionClickListener? = null
 

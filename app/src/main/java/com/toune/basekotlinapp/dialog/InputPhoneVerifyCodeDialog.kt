@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.dialog_phone_verify_code.view.*
  * @Date 2020/12/18 0018-下午 16:35
  * @Info 描述：
  */
-class InputPhoneVerifyCodeDialog(context: Context?) : DLBaseDialog(context) {
+class InputPhoneVerifyCodeDialog(context: Context?) : DLBaseDialog(context,R.layout.dialog_phone_verify_code) {
     override fun initEvent() {
         dialogView!!.closeIv.setOnClickListener {
             dismiss()
@@ -28,8 +28,5 @@ class InputPhoneVerifyCodeDialog(context: Context?) : DLBaseDialog(context) {
             //确定按钮
         }
     }
-
-    override val layout: Int
-        get() = R.layout.dialog_phone_verify_code
 
 }
