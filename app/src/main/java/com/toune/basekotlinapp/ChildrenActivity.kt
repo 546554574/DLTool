@@ -38,7 +38,7 @@ class ChildrenActivity : DLBaseActivity<ChildrenActivityView, ChildrenActivityPr
 
     var fragment: Fragment? = null
     override fun init(savedInstanceState: Bundle?) {
-        setToolBar(intent.extras!!.getString("title"))
+        setTitleStr(intent.extras!!.getString("title"))
         val position = intent.extras!!.getInt("position")
         if (fragment == null) {
             fragment = MainActivity.fragmentList[position]

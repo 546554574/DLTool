@@ -28,6 +28,9 @@ object DLActivityTool {
      * 获取当前的Activity（堆栈中最后一个压入的)
      */
     fun currentActivity(): Activity? {
+        if (activityStack==null){
+            return null
+        }
         return activityStack!!.lastElement()
     }
 
