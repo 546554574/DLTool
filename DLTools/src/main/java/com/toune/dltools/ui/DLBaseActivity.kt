@@ -174,7 +174,7 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
     }
 
     override fun hideLoading() {
-        if (this::loadingDialog.isInitialized && loadingDialog.isShowing) {
+        if (this::loadingDialog.isInitialized && !loadingDialog.ownerActivity!!.isDestroyed && loadingDialog.isShowing) {
             loadingDialog.hide()
             loadingDialog.dismiss()
         }

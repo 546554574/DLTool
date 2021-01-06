@@ -154,6 +154,19 @@ class DLVerifyCodeInputView : LinearLayout {
 
                 }
             })
+            editText.setOnFocusChangeListener { v, hasFocus ->
+                if (hasFocus){
+                    if (index>0){
+                        for (pos in 0..index) {
+                            if (editList[pos].text.toString().isNullOrEmpty()){
+                                editList[pos].requestFocus()
+                                RxKeyboardTool.showSoftInput(context,editList[pos])
+                                return@setOnFocusChangeListener
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
