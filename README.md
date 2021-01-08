@@ -23,6 +23,14 @@ minSdkVersion 19
 自定义APP的onCreate中添加如下代码进行初始
 
         DLTool.init(this)
+            .setActivityConfig(DLActivityConfig.Builder()  //设置BaseActivity的参数
+                .setLoadingColor(Color.YELLOW) //设置loading的颜色
+                .setLoadingXml(R.layout.layout_loading_xml) //直接设置loading的样式
+//                .setCustomTitleView(CustomTitleView()) //直接设置自己的标题栏
+                .setDefaultTextGravity(Gravity.CENTER_VERTICAL) //设置默认标题栏的文字位置
+                .setDefaultTitleBgColor(Color.BLUE)//设置默认标题栏的背景颜色
+                .setDefaultTextColor(Color.WHITE)//设置默认标题栏的标题颜色
+            )
 	  .setLongCangFont()//设置自定义字体
 ```
 ## 注意
