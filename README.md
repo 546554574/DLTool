@@ -11,7 +11,7 @@ allprojects {
 ```
 ## Step2
 ```
-  implementation 'com.github.546554574:DLTool:1.0.5'
+    implementation 'com.github.546554574.DLTool:DLTools:1.0.5'
 ```
 ## Step3
 ```
