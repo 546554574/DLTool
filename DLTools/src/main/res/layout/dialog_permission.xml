@@ -8,7 +8,7 @@
 
 
     <LinearLayout
-        android:layout_width="303dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
@@ -17,13 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="@color/white"
             app:qmui_radius="10dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:gravity="center"
                 android:text="用户协议《隐私条款》"
                 android:textColor="#ff000000"
                 android:textSize="18sp" />

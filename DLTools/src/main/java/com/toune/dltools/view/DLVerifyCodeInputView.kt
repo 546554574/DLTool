@@ -15,6 +15,7 @@ import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
@@ -160,7 +161,7 @@ class DLVerifyCodeInputView : LinearLayout {
                         for (pos in 0..index) {
                             if (editList[pos].text.toString().isNullOrEmpty()){
                                 editList[pos].requestFocus()
-                                RxKeyboardTool.showSoftInput(context,editList[pos])
+                                showSoftInput(context, editList[pos])
                                 return@setOnFocusChangeListener
                             }
                         }
@@ -334,6 +335,21 @@ class DLVerifyCodeInputView : LinearLayout {
 
     interface FinishListener {
         fun finish(code: String)
+    }
+
+    /**
+     * 动态显示软键盘
+     *
+     * @param context 上下文
+     * @param edit    输入框
+     */
+    fun showSoftInput(context: Context, edit: EditText) {
+        edit.isFocusable = true
+        edit.isFocusableInTouchMode = true
+        edit.requestFocus()
+        val inputManager = context
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.showSoftInput(edit, 0)
     }
 
 }

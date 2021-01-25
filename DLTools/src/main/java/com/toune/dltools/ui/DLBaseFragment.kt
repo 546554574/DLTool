@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.qmuiteam.qmui.arch.QMUIFragment
+import com.toune.dltools.DLActivityTool
 import com.toune.dltools.DLBasePresenterImpl
 import com.toune.dltools.DLBaseView
 
@@ -62,5 +63,22 @@ abstract class DLBaseFragment<V, T : DLBasePresenterImpl<V>?> : QMUIFragment(), 
 
     override fun hideLoading() {
         (activity as DLBaseActivity<*,*>).hideLoading()
+    }
+
+    /**
+     * 本Fragment进行的跳转
+     * @param clazz Class<Any>
+     */
+    fun startToActivity(clazz :Class<Any>){
+        DLActivityTool.skipActivity(requireContext(),clazz)
+    }
+
+    /**
+     * 本Fragment进行的带参数跳转
+     * @param clazz Class<Any>
+     * @param bundle Bundle
+     */
+    fun startToActivity(clazz :Class<Any>,bundle: Bundle){
+        DLActivityTool.skipActivity(requireContext(),clazz,bundle)
     }
 }

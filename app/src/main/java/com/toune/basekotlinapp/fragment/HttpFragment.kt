@@ -27,7 +27,8 @@ class HttpFragment:DLBaseFragment<DLBaseView,DLBasePresenterImpl<DLBaseView>>() 
 
     override fun lazyInit() {
         mRootView!!.httpBtn.setOnClickListener {
-            DLHttp.get("http://www.baidu.com").build(object :IDLHttpCallBack<String>(){
+            DLHttp.get("http://www.baidu.com")
+                .build(object :IDLHttpCallBack<String>(){
                 override fun success(t: String) {
                     mRootView!!.textTv.text = t
                 }

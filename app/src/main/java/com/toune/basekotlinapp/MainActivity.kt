@@ -1,6 +1,9 @@
 package com.toune.basekotlinapp
 
+import android.Manifest
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.blankj.rxbus.RxBus
@@ -57,7 +60,9 @@ class MainActivity : DLBaseActivity<MainActivityView, MainActivityPresenter>(), 
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun initEventAndData() {
+        showUserPrivacyDialog(null,Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
 
 }

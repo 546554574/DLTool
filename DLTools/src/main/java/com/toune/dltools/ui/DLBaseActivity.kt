@@ -1,9 +1,13 @@
 package com.toune.dltools.ui
 
+import android.app.Dialog
 import android.content.Context
+import android.content.PeriodicSync
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.view.DragAndDropPermissions
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
@@ -19,7 +23,9 @@ import com.toune.dltools.*
 import com.toune.dltools.dialog.LoadingDialog
 import com.toune.dltools.view.title.DLBaseTitleView
 import com.toune.dltools.view.title.DLCustomTitleView
+import com.toune.permission.DLPermissionDialog
 import com.toune.permission.DLPermissionUtil
+import com.toune.permission.OnGrantedListener
 import kotlinx.android.synthetic.main.activity_base.*
 
 
@@ -56,7 +62,6 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
             setStatusBar()
         }
         setContentView(view)
-        setPerUtil()
         //插入标题控件
         if (titleStr.isNullOrEmpty()) { //标题隐藏
             baseTitleLv.visibility = View.GONE
@@ -91,12 +96,66 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
     }
 
     /**
-     * 设置权限
+     * 显示用户隐私协议弹框
+     * 直接使用自己的dialog
      */
     @RequiresApi(Build.VERSION_CODES.M)
-    private fun setPerUtil() {
-        DLPermissionUtil.with(this).build()
+    fun showUserPrivacyDialog(dialog: Dialog) {
+        if (!DLPermissionUtil.isAppFirst(this)) {
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.show()
+        }
     }
+
+    /**
+     * 显示用户隐私协议弹框
+     * 用默认的，设置contentSpan就行
+     */
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun showUserPrivacyDialog(contentSpan: SpannableStringBuilder?, vararg permissions: String) {
+        if (!DLPermissionUtil.isAppFirst(this)) {
+            showUserPrivacy(contentSpan, *permissions)
+        }
+    }
+
+    /**
+     * 用户隐私协议弹窗
+     */
+    private fun showUserPrivacy(contentSpan: SpannableStringBuilder?, vararg permissions: String) {
+        var dialog = DLPermissionDialog(
+            this,
+            contentSpan,
+            object : DLPermissionDialog.OnPermissionClickListener {
+                override fun sureClickListener() {
+
+                }
+
+                override fun cancelClickListener() {
+
+                }
+            },
+            *permissions)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.show()
+    }
+
+    /**
+     * 设置这个页面需要请求的权限
+     */
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun showPermission(vararg permissions: String) {
+        DLPermissionUtil.with(this).showPermissionDialog(*permissions)
+    }
+
+    /**
+     * 显示用户隐私协议弹框
+     */
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun showPermission(onGrantedListener: OnGrantedListener, vararg permissions: String) {
+        DLPermissionUtil.with(this).setOnGrantedClickListener(onGrantedListener)
+            .showPermissionDialog(*permissions)
+    }
+
 
     /**
      * 使用默认的title才生效
@@ -141,7 +200,11 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
      * 返回按钮，可不实现
      */
     fun onBackIv() {
-        mTitleRootView!!.onBackIv(this)
+        if (mTitleRootView != null) {
+            mTitleRootView!!.onBackIv(this)
+        } else {
+            DLActivityTool.finishAllActivity()
+        }
     }
 
     fun setTitleStr(string: String?) {
@@ -155,6 +218,22 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
         super.onDestroy()
     }
 
+    /**
+     * 本Activity进行的跳转
+     * @param clazz Class<Any>
+     */
+    fun startToActivity(clazz :Class<Any>){
+        DLActivityTool.skipActivity(this,clazz)
+    }
+
+    /**
+     * 本Activity进行的带参数跳转
+     * @param clazz Class<Any>
+     * @param bundle Bundle
+     */
+    fun startToActivity(clazz :Class<Any>,bundle: Bundle){
+        DLActivityTool.skipActivity(this,clazz,bundle)
+    }
 
     abstract fun init(savedInstanceState: Bundle?)
     abstract fun initEventAndData()

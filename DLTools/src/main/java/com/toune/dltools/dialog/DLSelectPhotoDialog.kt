@@ -39,6 +39,15 @@ object DLSelectPhotoDialog {
     val SHOW_ALL_SELECTION = 1003 //拍照和选择照片都显示
     var SHOW_MEDIA_TYPE = SHOW_ALL_SELECTION //默认显示全部
 
+
+    /**
+     *
+     * @param boolean Boolean
+     */
+    fun show() {
+        showBottomDialog()
+    }
+
     /**
      *
      * @param boolean Boolean
