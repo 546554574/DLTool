@@ -3,6 +3,7 @@ package com.toune.basekotlinapp
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,7 +27,7 @@ class MainActivity : DLBaseActivity<MainActivityView, MainActivityPresenter>(), 
     }
 
     companion object {
-        val dataList = arrayListOf<String>("吐司", "弹窗", "艺术字", "二维码", "语音朗读","文本转MP3","http工具")
+        val dataList = arrayListOf<String>("吐司", "弹窗", "艺术字", "二维码", "语音朗读", "文本转MP3", "http工具")
         val fragmentList = arrayListOf(
             ToastFragment.newInstance(),
             MDialogFragment.newInstance(),
@@ -40,6 +41,10 @@ class MainActivity : DLBaseActivity<MainActivityView, MainActivityPresenter>(), 
 
     var adapter: MainAdapter? = null
     override fun init(savedInstanceState: Bundle?) {
+        showLoading()
+        Handler().postDelayed({
+            hideLoading()
+        }, 3000)
         notifyAdapter()
     }
 
@@ -62,7 +67,7 @@ class MainActivity : DLBaseActivity<MainActivityView, MainActivityPresenter>(), 
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun initEventAndData() {
-        showUserPrivacyDialog(null,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//        showUserPrivacyDialog(null, Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
 
 }

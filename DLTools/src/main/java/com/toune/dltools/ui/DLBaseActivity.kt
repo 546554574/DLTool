@@ -247,6 +247,7 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
         } else {
             loadingDialog =
                 LoadingDialog(this, DLActivityConfig.loadingColor, DLActivityConfig.loadingXml)
+            loadingDialog.setOwnerActivity(this)
             loadingDialog.setCanceledOnTouchOutside(true)
             loadingDialog.show()
         }

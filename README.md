@@ -23,7 +23,7 @@ minSdkVersion 19
 自定义APP的onCreate中添加如下代码进行初始
 
         DLTool.init(this)
-	  .setLongCangFont()//设置自定义字体
+	  .setLongCangFont()//设置自定义字体   
 ```
 ## 注意
 ```
