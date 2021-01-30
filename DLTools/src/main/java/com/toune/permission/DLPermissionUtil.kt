@@ -43,8 +43,8 @@ class DLPermissionUtil {
 
     }
     var context: Activity? = null
-    lateinit var mPermissionClickListener: DLPermissionDialog.OnPermissionClickListener
-    lateinit var onGrantedListener: OnGrantedListener
+    var mPermissionClickListener: DLPermissionDialog.OnPermissionClickListener?=null
+    var onGrantedListener: OnGrantedListener?=null
 
     constructor(context: Activity) {
         this.context = context
@@ -68,7 +68,7 @@ class DLPermissionUtil {
             .request(object : OnPermission {
                 override fun hasPermission(granted: List<String>, all: Boolean) {
                     if (onGrantedListener!=null) {
-                        onGrantedListener.grantedListener(granted)
+                        onGrantedListener!!.grantedListener(granted)
                     }
                 }
 
@@ -78,7 +78,7 @@ class DLPermissionUtil {
                         XXPermissions.startPermissionActivity(context, denied)
                     }
                     if (onGrantedListener!=null) {
-                        onGrantedListener.deniedListener(denied)
+                        onGrantedListener!!.deniedListener(denied)
                     }
                 }
             })
