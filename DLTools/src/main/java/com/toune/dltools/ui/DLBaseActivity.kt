@@ -41,7 +41,7 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
         RelativeLayout.LayoutParams.MATCH_PARENT,
         ViewGroup.LayoutParams.WRAP_CONTENT
     )
-    val isSignOut = false//判断是不是双击返回按钮退出APP的页面
+    var isSignOut = false//判断是不是双击返回按钮退出APP的页面
     lateinit var context: Context
     var mPresenter: T? = null
     var mRootView: View? = null //多布局根View
@@ -255,7 +255,6 @@ open abstract class DLBaseActivity<V, T : DLBasePresenterImpl<V>?> : AppCompatAc
 
     override fun hideLoading() {
         if (this::loadingDialog.isInitialized && !loadingDialog.ownerActivity!!.isDestroyed && loadingDialog.isShowing) {
-            loadingDialog.hide()
             loadingDialog.dismiss()
         }
     }
